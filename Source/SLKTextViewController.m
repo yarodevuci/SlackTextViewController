@@ -290,7 +290,7 @@ CGFloat const SLKAutoCompletionViewDefaultHeight = 140.0;
     if (!_autoCompletionView) {
         _autoCompletionView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
         _autoCompletionView.translatesAutoresizingMaskIntoConstraints = NO;
-        _autoCompletionView.backgroundColor = [UIColor colorWithWhite:0.97 alpha:1.0];
+        _autoCompletionView.backgroundColor = [UIColor colorWithRed:0.09 green:0.09 blue:0.09 alpha:1.0];
         _autoCompletionView.scrollsToTop = NO;
         _autoCompletionView.dataSource = self;
         _autoCompletionView.delegate = self;
@@ -306,7 +306,7 @@ CGFloat const SLKAutoCompletionViewDefaultHeight = 140.0;
         
         _autoCompletionHairline = [[UIView alloc] initWithFrame:rect];
         _autoCompletionHairline.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-        _autoCompletionHairline.backgroundColor = _autoCompletionView.separatorColor;
+        _autoCompletionHairline.backgroundColor = [UIColor colorWithRed:0.09 green:0.09 blue:0.09 alpha:1.0];
         [_autoCompletionView addSubview:_autoCompletionHairline];
     }
     return _autoCompletionView;
