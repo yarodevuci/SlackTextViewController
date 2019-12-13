@@ -80,9 +80,9 @@ NSString * const SLKTextInputbarDidMoveNotification =   @"SLKTextInputbarDidMove
     self.charCountLabelNormalColor = [UIColor lightGrayColor];
     self.charCountLabelWarningColor = [UIColor redColor];
     
-    self.autoHideRightButton = YES;
-    self.editorContentViewHeight = 38.0;
-    self.contentInset = UIEdgeInsetsMake(5.0, 8.0, 5.0, 8.0);
+    self.autoHideRightButton = NO;
+    self.editorContentViewHeight = 38.0; //UIEdgeInsets(top: 1, left: 11, bottom: 11, right: 1)
+    self.contentInset = UIEdgeInsetsMake(5.0, 8.0, 6.0, 4);
 
     // Since iOS 11, it is required to call -layoutSubviews before adding custom subviews
     // so private UIToolbar subviews don't interfere on the touch hierarchy
@@ -148,7 +148,7 @@ NSString * const SLKTextInputbarDidMoveNotification =   @"SLKTextInputbarDidMove
         _textView.returnKeyType = UIReturnKeyDefault;
         _textView.enablesReturnKeyAutomatically = YES;
         _textView.scrollIndicatorInsets = UIEdgeInsetsMake(0.0, -1.0, 0.0, 1.0);
-        _textView.textContainerInset = UIEdgeInsetsMake(8.0, 4.0, 8.0, 0.0);
+        _textView.textContainerInset = UIEdgeInsetsMake(8.0, 8.0, 8.0, 0.0);
         _textView.layer.cornerRadius = 5.0;
         _textView.layer.borderWidth = 0.5;
         _textView.layer.borderColor =  [UIColor colorWithRed:200.0/255.0 green:200.0/255.0 blue:205.0/255.0 alpha:1.0].CGColor;
@@ -196,7 +196,7 @@ NSString * const SLKTextInputbarDidMoveNotification =   @"SLKTextInputbarDidMove
         _rightButton.titleLabel.font = [UIFont boldSystemFontOfSize:15.0];
         _rightButton.enabled = NO;
         
-        NSString *title = NSLocalizedString(@"Send", nil);
+        NSString *title = NSLocalizedString(@"", nil);
         
         [_rightButton setTitle:title forState:UIControlStateNormal];
     }
@@ -710,20 +710,20 @@ NSString * const SLKTextInputbarDidMoveNotification =   @"SLKTextInputbarDidMove
         
         if (leftButtonSize.width > 0) {
             self.leftButtonHC.constant = roundf(leftButtonSize.height);
-            self.leftButtonBottomMarginC.constant = roundf((self.intrinsicContentSize.height - leftButtonSize.height) / 2.0) + self.slk_contentViewHeight / 2.0;
+            self.leftButtonBottomMarginC.constant = 10;//roundf((self.intrinsicContentSize.height - leftButtonSize.height) / 2.0) + self.slk_contentViewHeight / 2.0;
         }
         
         self.leftButtonWC.constant = roundf(leftButtonSize.width);
         self.leftMarginWC.constant = (leftButtonSize.width > 0) ? self.contentInset.left : zero;
         
-        self.rightButtonWC.constant = [self slk_appropriateRightButtonWidth];
-        self.rightMarginWC.constant = [self slk_appropriateRightButtonMargin];
+        self.rightButtonWC.constant = 40;//[self slk_appropriateRightButtonWidth];
+        self.rightMarginWC.constant = 2;//[self slk_appropriateRightButtonMargin];
         
         CGFloat rightVerMargin = (self.intrinsicContentSize.height - self.slk_contentViewHeight - self.rightButton.intrinsicContentSize.height) / 2.0;
         CGFloat rightVerBottomMargin = rightVerMargin + self.slk_contentViewHeight;
         
-        self.rightButtonTopMarginC.constant = rightVerMargin;
-        self.rightButtonBottomMarginC.constant = rightVerBottomMargin;
+        self.rightButtonTopMarginC.constant = 0;//rightVerMargin;
+        self.rightButtonBottomMarginC.constant = 0;//rightVerBottomMargin;
     }
 }
 
