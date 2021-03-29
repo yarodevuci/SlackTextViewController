@@ -15,8 +15,7 @@ let package = Package(
     )
   ],
   targets: [
-    .target(name: "SlackTextViewController"), path: "./Source"
-    
+    .target(name: "SlackTextViewController", path: "./Source")
   ],
   swiftLanguageVersions: [.v5]
 )
